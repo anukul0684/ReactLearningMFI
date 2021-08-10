@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 class Card extends Component {
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <h1>Hello World!!</h1>
-            </div>
+                <h2>Hello Again.</h2>
+            </React.Fragment>
         );
     }
 }
