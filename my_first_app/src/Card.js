@@ -4,7 +4,7 @@ class Card extends Component {
     render() {
         return (
             <React.Fragment>
-                <section class="card-container">
+                <section className="card-container">
                     <header>
                         <span initials="AK"></span>
                         <h2>Anu Kulshrestha</h2>
