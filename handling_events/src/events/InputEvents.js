@@ -13,6 +13,8 @@ class InputEvents extends Component {
         this.handleOnClick = this.handleOnClick.bind(this);
         this.handleMouseDown = this.handleMouseDown.bind(this);
         this.handleMouseUp = this.handleMouseUp.bind(this);
+        this.handleOnChange = this.handleOnChange.bind(this);
+        this.handleOnChangeFormText = this.handleOnChangeFormText.bind(this);
     }
 
     handleOnClick() {
@@ -36,6 +38,25 @@ class InputEvents extends Component {
     handleMouseUp() {
         this.setState({
             mouseDown: false,
+        });
+    }
+
+    handleOnChange(event) {
+        this.setState({
+            inputText: event.target.value,
+        });
+    }
+
+    handleOnSubmit = (e) => {
+        e.preventDefault();
+        this.setState({
+            formInputTextSubmitted: this.state.formInputText,
+        });
+    }
+
+    handleOnChangeFormText(e) {
+        this.setState({
+            formInputText: e.target.value,
         });
     }
 
@@ -67,17 +88,21 @@ class InputEvents extends Component {
                 </section>
                 <section>
                     <h3>Input Change Events:</h3>
-                    <input type="text" value={this.state.inputText}/>
+                    <input type="text" 
+                            value={this.state.inputText}
+                            onChange={this.handleOnChange}/>
                     <p>Input Value: {this.state.inputText}</p>                    
                 </section>
                 <section>
                     <h3>Form Submit Events:</h3>
-                    <input type="text" value={this.state.formInputText}/>
-                    <button>
-                        Submit
-                    </button>
-                    <p>Input Value: {this.state.formInputText}</p>
-                    <p>Submitted Value: </p>
+                    <form onSubmit={this.handleOnSubmit}>
+                        <input type="text" value={this.state.formInputText} onChange={this.handleOnChangeFormText} />
+                        <button type="submit">
+                            Submit
+                        </button>
+                        <p>Input Value: {this.state.formInputText}</p>
+                        <p>Submitted Value: {this.state.formInputTextSubmitted}</p>
+                    </form>
                 </section>
                 
             </React.Fragment>
